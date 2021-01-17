@@ -45,6 +45,23 @@ function writePassword() {
     myArray = myArray.concat(specialChar);
     console.log("include special characters: ", myArray)
   }
+  // Making sure the user includes at least one type of character 
+  if(!includeNumbers && !includeUpper && includeLower && includeChar){
+    alert("Please select at least one password choice")
+    return writePassword();
+  }
+  function generatePassword(){
+    // Setting up my actual new password
+    var password = [];
+    for(var i=0; i < userLength; i++){
+      // Looping through myArray and grabbing random characters
+      var randomize = Math.floor(Math.random() * myArray.length);
+      // Adding to password array
+      password.push(myArray[randomize]) 
+    }
+    password = password.join("");
+    return password;
+  }
 
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
